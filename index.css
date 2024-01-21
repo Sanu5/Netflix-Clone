@@ -1,5 +1,5 @@
 html,body{
-    background-color: black;
+    background-color: rgb(20, 20, 20);
     padding: 0;
     margin: 0;
     font-family: Helvetica, Arial, sans-serif;
@@ -11,6 +11,16 @@ html,body{
 
 header{
     background-color: transparent;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transition: all ease 600ms;
+}
+
+header.black-bg{
+    background-color: rgb(20, 20, 20);
 }
 
 .header-cont{
@@ -21,8 +31,8 @@ header{
 
 .container{
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 1600px;
+    margin-left: 50px;
 }
 
 .left-cont, .right-cont{
@@ -31,8 +41,9 @@ header{
     align-items: center;
 }
 
+
 .brand{
-    max-width: 110px;
+    max-width: 120px;
 }
 
 .main-nav{
@@ -42,6 +53,7 @@ header{
 }
 
 .nav-item{
+    margin-right: 10px;
     margin-right: 20px;
     color: #e5e5e5;
     opacity: 83%;
@@ -68,9 +80,13 @@ header{
 }
 
 /* movies-section */
-.movies-section{
-    margin: 41px 0;
+.movies-cont{
+    margin-left: 50px;
+    margin-top: 30px;
+}
 
+.movies-section{
+    margin: 41px;
 }
 
 .movies-section-heading{
@@ -99,7 +115,7 @@ header{
     align-items: center;
     flex-wrap: nowrap;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
 }
 
 .movie-item{
@@ -118,22 +134,25 @@ header{
 .banner-section{
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100vh;
+    position: relative;
 }
 
 
 .banner-content{
     display: flex;
     flex-direction: column;
-    min-height: 120vh;
-    padding-top: 50px;
+    padding-top: 70px;
 }
 
 .banner__title{
     color: white;
-    font-size: 78px;
+    font-size: 85px;
     line-height: 1.2;
     margin: 0;
     margin-bottom: 16px;
+    margin-top: 100px;
+    max-width: 40%;
 
 }
 
@@ -148,6 +167,8 @@ header{
 .banner-overview{
     font-size: 16.4px;
     color: white;
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    max-width: 40%;
     line-height: 1.3;
 }
 
@@ -164,9 +185,29 @@ header{
     margin-right: 11px;
     border-radius: 4px;
     display: flex;
+    align-items: center;
     flex-direction: row;
     font-size: 16px;
     font-weight: 700;
+    cursor: pointer;
+}
+
+.action-button:last-child{
+    background-color: rgb(109, 109, 110, 0.7);
+    color: white;
+}
+
+.banner_fadeBottom{
+    height: 120px;
+    background: linear-gradient(180deg,
+        transparent,
+        rgba(37, 37, 37,.61),
+        #141414
+        );
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;    
 }
 
 
@@ -175,5 +216,8 @@ header{
 @media(max-width: 767px){
     .main-nav{
         display: none;
+    }
+    .banner__overview, .banner__title{
+        max-width: 100%;
     }
 }
