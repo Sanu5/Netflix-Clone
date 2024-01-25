@@ -31,7 +31,7 @@ header.black-bg{
 
 .container{
     width: 100%;
-    max-width: 1600px;
+    max-width: 1550px;
     margin-left: 50px;
 }
 
@@ -126,10 +126,32 @@ header.black-bg{
     position: relative;
 }
 
+.movie-item-img{
+    width: inherit;
+}
+
+.movie-item .iframe-wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 100%;
+    width: 100%;
+    z-index: 10;
+    display: none;
+    border: none;
+    outline: none;
+}
+
+.movie-item:hover .iframe-wrap{
+
+    display: block;
+}
+
 .movie-item:hover{
     transform: scale(1.4);
     transition: transform linear 250ms;
 }
+
 
 .banner-section{
     background-repeat: no-repeat;

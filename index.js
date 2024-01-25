@@ -83,7 +83,10 @@ function buildMoviesSection(list, categoryName){
 
     const moviesListHTML = list.map(item => {
         return `
-        <img class="movie-item" src="${imgPath}${item.backdrop_path}" alt="${item.title}">
+        <div class ="movie-item" onmouseenter = "searchMovieTrailer('${item.title}', 'yt${item.id}')">
+        <img class="movie-item-img" src="${imgPath}${item.backdrop_path}" alt="${item.title}" onclick="searchMovieTrailer${item.title}">
+        <div class = "iframe-wrap" id ="yt${item.id}"></div>
+        </div>
         `;
     }).join('');
 
@@ -102,8 +105,24 @@ function buildMoviesSection(list, categoryName){
     moviesCont.append(div);
 }
 
-function searchMovieTrailer(movieName){
+function searchMovieTrailer(movieName, iframId){
     if(!movieName) return;
+
+    fetch(apiPaths.searchOnYoutube(movieName))
+    .then(res => res.json())
+    .then(res => {
+
+        const bestResult = res.items[0];
+
+        const element = document.getElementById(iframId);
+        console.log(element, iframId);
+
+        const div = document.createElement('div');
+        div.innerHTML = `<iframe width="245px" height="150px" src="https://www.youtube.com/embed/${bestResult.id.videoId}?autoplay=1&controls=0"></iframe>`
+        
+        element.append(div);
+    })
+    .catch(err=> console.log(err));
 
 
 }
